@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- CSS Day1 Interview Question.
+Difference between flex row and column
+Explain inline , internal and external stylesheet
+Justify-content allows you to do what?
+Difference between absolute and relative positioning
+What is the z-index in CSS?
+What is the difference between padding and margin? -->
+
+Ques.1 Difference between flex row and column
+
+Ans: 1. Flex Direction: Row (Default)
+
+Main Axis: Horizontal (left to right in left-to-right languages).
+
+Cross Axis: Vertical (top to bottom).
+
+Child elements are arranged in a horizontal line, one next to another.
+
+Example:
+
+
+.container {
+  display: flex;
+  flex-direction: row; /* Default */
+}
+
+2. Flex Direction: Column
+
+Main Axis: Vertical (top to bottom).
+
+Cross Axis: Horizontal (left to right).
+
+Child elements are stacked in a vertical column.
+
+Example:
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+Ques.2 Explain inline , internal and external stylesheet Justify-content allows you to do what?
+
+Ans: These are three methods to apply CSS to an HTML document:
+
+1. Inline Styles
+
+Definition: CSS is applied directly to the HTML element using the style attribute.
+
+Usage: Ideal for quick changes or styling a single element.
+
+Example:
+
+<p style="color: blue; font-size: 16px;">This is an inline style.</p>
+
+Advantages:
+
+Easy to apply.
+
+Good for testing or one-off styling.
+
+
+Disadvantages:
+
+Difficult to maintain for large projects.
+
+Doesn't separate content and design.
+
+
+2. Internal Stylesheet
+
+Definition: CSS is written within a <style> tag inside the <head> of the HTML document.
+
+Usage: Useful for styling a single webpage.
+
+Example:
+
+<head>
+  <style>
+    p {
+      color: red;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+Advantages:
+
+All styles for the page are centralized.
+
+No need for external files.
+
+
+Disadvantages:
+
+Cannot reuse styles across multiple pages.
+
+Adds to the HTML document's size.
+
+
+
+3. External Stylesheet
+
+Definition: CSS is written in a separate .css file and linked to the HTML document using the <link> tag.
+
+Usage: Best for large projects and multiple webpages.
+
+Example:
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+styles.css:
+
+p {
+  color: green;
+  font-size: 20px;
+}
+
+Advantages:
+
+Styles can be reused across multiple pages.
+
+Maintains separation of content and design.
+
+
+Disadvantages:
+
+Requires an additional HTTP request to load the file.
+
+
+
+
+
+
+
+
+
+Ques.3 Difference between absolute and relative positioning
+
+Ans: Absolute and relative positioning are two CSS positioning techniques used to control the placement of HTML elements on a webpage. Here's a comparison of the two:
+
+1. Relative Positioning (position: relative;)
+
+Positioning Reference: The element is positioned relative to its normal position in the document flow.
+
+Effect:
+
+Moves the element without affecting the surrounding elements, which stay in their original places.
+
+If no top, right, bottom, or left values are specified, the element remains in its normal position.
+
+
+Use Case: Used when you want to create slight adjustments to an element's position while keeping it in the normal document flow.
+
+Impact on Flow: The element still occupies space in the document flow.
+
+
+Example:
+
+<div style="position: relative; top: 10px; left: 20px;">
+  This div is shifted 10px down and 20px to the right.
+</div>
+
+2. Absolute Positioning (position: absolute;)
+
+Positioning Reference: The element is positioned relative to its nearest positioned ancestor (an ancestor with position: relative, absolute, or fixed), or the viewport if no positioned ancestor exists.
+
+Effect:
+
+Completely removed from the normal document flow.
+
+Does not affect or get affected by surrounding elements.
+
+Positioned exactly based on the top, right, bottom, and left properties.
+
+
+Use Case: Useful for creating overlays, tooltips, or precise element placement independent of other elements.
+
+Impact on Flow: The element does not occupy space in the document flow.
+
+
+Example:
+
+<div style="position: relative;">
+  <div style="position: absolute; top: 10px; left: 20px;">
+    This div is positioned 10px down and 20px to the right of the parent div.
+  </div>
+</div>
+
+Key Differences
+
+Visual Summary:
+
+Relative: Adjust the position of an element slightly but it keeps its original space in the flow.
+
+Absolute: Position the element exactly where you want, and it does not affect or occupy space in the layout.
+
+
+
+
+
+
+
+
+
+Ques.4 What is the z-index in CSS?
+
+Ans: The z-index property in CSS is used to control the stacking order of elements on a webpage along the z-axis (perpendicular to the screen). It determines which elements appear in front of or behind others when they overlap.
+
+Key Points About z-index:
+
+1. Default Stacking Context:
+
+By default, elements are stacked in the order they appear in the HTML, with later elements displayed on top.
+
+z-index allows you to override this default behavior.
+
+
+
+2. Usage:
+
+Elements with higher z-index values are displayed in front of elements with lower values.
+
+The z-index property only works on elements with a positioning context (i.e., position: relative, absolute, fixed, or sticky).
+
+
+
+3. Values:
+
+auto: The default value; the element’s stack level is determined by its order in the document.
+
+Integer values: Positive or negative numbers. Higher numbers appear on top.
+
+Negative values place the element behind other elements.
+
+
+
+4. Stacking Context:
+
+A stacking context is created when certain conditions are met (e.g., using position with a z-index or other CSS properties like opacity).
+
+Elements inside a stacking context are layered within it, but this stacking is independent of other stacking contexts.
+
+
+
+Example
+
+<div style="position: relative; z-index: 1; background-color: red; width: 100px; height: 100px;">
+  Red Box (z-index: 1)
+</div>
+div style="position: relative; z-index: 2; background-color: blue; width: 100px; height: 100px; margin-top: -50px;">
+  Blue Box (z-index: 2)
+</div>
+
+In this example:
+
+The blue box will appear in front of the red box because it has a higher z-index.
+
+
+When to Use z-index
+
+Creating overlapping layouts like modals, tooltips, or dropdowns.
+
+Resolving stacking issues where one element unintentionally overlaps another.
+
+
+Best Practices
+
+Use z-index sparingly to avoid complex stacking issues.
+
+Keep stacking contexts organized and predictable to prevent bugs.
+
+
+
+
+
+
+
+
+Ques.5 What is the difference between padding and margin?
+
+Ans: Padding and margin are both CSS properties used for spacing around elements, but they serve different purposes and affect different areas.
+
+
+1. Padding
+
+Definition: Padding is the space inside an element, between its content and its border.
+
+Effect: Increases the size of the element by adding space inside its boundary.
+
+Purpose: Used to create space between the content and the edge of the element (e.g., text and the border of a button).
+
+Impact: Expands the element's size without affecting the spacing between elements.
+
+
+Example:
+
+div {
+  padding: 20px; /* Adds 20px of space inside the element's border */
+}
+
+Visual Representation:
+
+[ Border ]
+   Padding
+      Content
+
+
+2. Margin
+
+Definition: Margin is the space outside an element, between its border and other elements.
+
+Effect: Creates space around an element, separating it from other elements.
+
+Purpose: Used to control the distance between elements on the page.
+
+Impact: Does not increase the element's size, only affects spacing between elements.
+
+
+Example:
+div {
+    margin: 20px; /* Adds 20px of space outside the element */
+  }
+  
+  Visual Representation:
+  
+  [ Margin ]
+     Border
+        Content
+  
+  
+  Key Differences
+  
+  Example Combining Both
+  
+  div {
+    padding: 10px; /* Space inside the border */
+    margin: 20px;  /* Space outside the element */
+    border: 2px solid black;
+  }
+  
+  Here:
+  
+  Padding creates space between the content and the border.
+
+  Margin creates space between this div and other elements.  
+
+
+    
+</body>
+</html>
